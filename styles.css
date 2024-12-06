@@ -35,7 +35,8 @@ h1 {
     height: 180px; /* Tinggi kartu */
     perspective: 1000px; /* Memberikan efek 3D pada kartu */
     position: relative; /* Menempatkan kartu secara relatif untuk penataan lebih lanjut */
-    transition: transform 1s ease-out, opacity 1s ease; /* Menambahkan transisi untuk rotasi dan transparansi */
+    transition: transform 1s ease-out, opacity 1s ease; /* Menambahkan transisi untuk rotasi dan transparansi 
+    ease-out berarti animasi dimulai cepat dan melambat di akhir.*/
 }
 
 .card.hidden {
