@@ -18,7 +18,7 @@ const timerElement = document.getElementById("timer"); // Elemen untuk menampilk
 
 // Setup untuk audio permainan
 let bellSound = new Audio("sound/bell.mp3"); // Suara bel yang diputar saat waktu habis
-let backgroundMusic = new Audio("sound/background.mp3"); // Musik latar belakang
+let backgroundMusic = new Audio("sound/Dancing in Raindrops (1).mp3"); // Musik latar belakang
 backgroundMusic.loop = true; // Musik latar dimainkan terus-menerus
 backgroundMusic.volume = 0.5; // Pengaturan volume musik latar
 backgroundMusic.play(); // Memulai musik latar
