@@ -1,0 +1,195 @@
+body {
+    font-family: Arial, sans-serif; /* Mengatur font untuk seluruh halaman */
+    text-align: center; /* Menengahkan teks di seluruh halaman */
+    background-image: url("images/landing page.png"); /* Menambahkan gambar latar belakang */
+    background-size: cover; /* Mengatur gambar latar agar menutupi seluruh halaman */
+    background-position: center; /* Menempatkan gambar latar di tengah */
+    background-repeat: no-repeat; /* Menghindari pengulangan gambar latar */
+    background-color: rgba(0, 0, 0, 0.5); /* Memberikan transparansi hitam di latar belakang */
+    background-blend-mode: overlay; /* Menggabungkan warna latar dengan gambar */
+    margin: 0; /* Menghilangkan margin default dari browser */
+    display: flex; /* Menggunakan Flexbox untuk layout halaman */
+    flex-direction: column; /* Menyusun elemen halaman secara vertikal */
+    justify-content: space-between; /* Menyebarkan elemen untuk mengisi ruang secara merata */
+    min-height: 100vh; /* Memastikan halaman mengisi setidaknya seluruh tinggi layar */
+}
+
+h1 {
+    margin-bottom: 40px; /* Menambahkan jarak bawah untuk judul */
+    color: #fff; /* Mengatur warna teks judul menjadi putih */
+}
+
+.card-container {
+    display: flex; /* Menggunakan Flexbox untuk menata kartu */
+    justify-content: flex-start; /* Menempatkan kartu ke kiri */
+    align-items: center; /* Menyusun kartu secara vertikal di tengah */
+    position: relative; /* Menempatkan elemen relatif untuk penataan lebih lanjut */
+    height: auto; /* Tinggi otomatis tergantung konten */
+    margin-bottom: 50px; /* Menambahkan jarak bawah pada kontainer kartu */
+    flex-wrap: wrap; /* Membuat kartu membungkus ke baris berikutnya jika ruang tidak cukup */
+}
+
+.card {
+    margin-left: 50px; /* Memberikan jarak kiri pada kartu */
+    width: 140px; /* Lebar kartu */
+    height: 180px; /* Tinggi kartu */
+    perspective: 1000px; /* Memberikan efek 3D pada kartu */
+    position: relative; /* Menempatkan kartu secara relatif untuk penataan lebih lanjut */
+    transition: transform 1s ease-out, opacity 1s ease; /* Menambahkan transisi untuk rotasi dan transparansi */
+}
+
+.card.hidden {
+    opacity: 0; /* Menyembunyikan kartu dengan mengubah opasitas menjadi 0 */
+}
+
+.card-inner {
+    width: 100%; /* Lebar penuh kartu */
+    height: 100%; /* Tinggi penuh kartu */
+    transform-style: preserve-3d; /* Mempertahankan gaya 3D untuk elemen anak */
+    transition: transform 0.6s; /* Menambahkan transisi untuk rotasi kartu */
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg); /* Memutar kartu 180 derajat pada sumbu Y saat terbalik */
+}
+
+.card-front,
+.card-back {
+    width: 100%; /* Lebar penuh kartu depan dan belakang */
+    height: 100%; /* Tinggi penuh kartu depan dan belakang */
+    position: absolute; /* Menempatkan elemen kartu depan dan belakang secara absolut */
+    backface-visibility: hidden; /* Menyembunyikan sisi belakang saat kartu diputar */
+    display: flex; /* Menggunakan Flexbox untuk penataan konten dalam kartu */
+    justify-content: center; /* Menengahkan konten dalam kartu */
+    align-items: center; /* Menyusun konten secara vertikal di tengah kartu */
+    font-size: 20px; /* Mengatur ukuran font pada kartu */
+    font-weight: bold; /* Memberikan ketebalan pada font */
+    color: #fff; /* Mengatur warna teks pada kartu menjadi putih */
+    border-radius: 10px; /* Memberikan sudut melengkung pada kartu */
+}
+
+.card-front img, 
+.card-back img {
+    width: 100%; /* Lebar gambar kartu penuh */
+    height: 100%; /* Tinggi gambar kartu penuh */
+    object-fit: cover; /* Mengatur gambar agar menutupi area kartu tanpa distorsi */
+    border-radius: 10px; /* Memberikan sudut melengkung pada gambar */
+}
+
+.card-front {
+    background-color: #007bff; /* Mengatur latar belakang kartu depan dengan warna biru */
+}
+
+.card-back {
+    background-color: #28a745; /* Mengatur latar belakang kartu belakang dengan warna hijau */
+    transform: rotateY(180deg); /* Memutar kartu belakang 180 derajat pada sumbu Y */
+}
+
+button {
+    margin-top: 20px; /* Memberikan jarak atas pada tombol */
+    padding: 10px 20px; /* Memberikan padding pada tombol */
+    font-size: 16px; /* Ukuran font pada tombol */
+    background-color: #007bff; /* Latar belakang tombol dengan warna biru */
+    color: #fff; /* Warna teks tombol menjadi putih */
+    border: none; /* Menghapus border pada tombol */
+    border-radius: 5px; /* Memberikan sudut melengkung pada tombol */
+    cursor: pointer; /* Mengubah kursor menjadi pointer saat mouse berada di atas tombol */
+}
+
+button:disabled {
+    background-color: #aaa; /* Mengubah warna latar belakang tombol saat dinonaktifkan */
+    cursor: not-allowed; /* Mengubah kursor menjadi tidak diperbolehkan saat tombol dinonaktifkan */
+}
+
+.timer {
+    margin: 20px 0; /* Memberikan jarak vertikal pada timer */
+    font-size: 18px; /* Ukuran font pada timer */
+    color: #fff; /* Mengatur warna teks timer menjadi putih */
+}
+
+footer {
+    background-color: #007bff; /* Latar belakang footer dengan warna biru */
+    color: #fff; /* Warna teks footer menjadi putih */
+    text-align: center; /* Menengahkan teks di dalam footer */
+    padding: 10px 0; /* Memberikan padding pada footer */
+    position: relative; /* Menempatkan footer secara relatif */
+    width: 100%; /* Mengatur lebar footer agar memenuhi seluruh lebar layar */
+    bottom: 0; /* Menempatkan footer di bagian bawah */
+}
+
+/* Responsif untuk ukuran layar kecil */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem; /* Lebih kecil untuk layar kecil */
+        margin-bottom: 50px; /* Memberikan jarak bawah yang lebih besar pada judul */
+    }
+
+    .card-container {
+        display: flex; /* Menampilkan kontainer kartu menggunakan Flexbox */
+        flex-wrap: wrap; /* Membungkus kartu jika tidak cukup ruang */
+        justify-content: center; /* Menempatkan kartu di tengah */
+        align-items: center; /* Memastikan kartu tetap sejajar secara vertikal */
+        gap: 20px; /* Menambahkan jarak antar kartu */
+        height: auto; /* Tinggi kontainer menyesuaikan dengan konten */
+    }
+
+    .card {
+        width: 120px; /* Mengurangi ukuran kartu untuk layar kecil */
+        height: 160px; /* Mengurangi tinggi kartu */
+        margin: 10px; /* Menambahkan jarak antar kartu */
+    }
+
+    button {
+        padding: 8px 16px; /* Mengurangi padding pada tombol */
+        font-size: 14px; /* Mengurangi ukuran font tombol */
+        margin-bottom: 50px; /* Memberikan jarak bawah yang lebih besar pada tombol */
+    }
+
+    .timer {
+        font-size: 16px; /* Mengurangi ukuran font pada timer */
+    }
+
+    footer {
+        font-size: 14px; /* Mengurangi ukuran font footer */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem; /* Ukuran font lebih kecil untuk layar sangat kecil */
+        margin-bottom: 50px; /* Memberikan jarak bawah yang lebih besar pada judul */
+    }
+
+    .card-container {
+        display: flex; /* Menampilkan kontainer kartu menggunakan Flexbox */
+        flex-direction: column; /* Menyusun kartu secara vertikal */
+        justify-content: center; /* Menempatkan kartu di tengah */
+        align-items: center; /* Memastikan kartu berada di tengah */
+        gap: 20px; /* Menambahkan jarak antar kartu */
+    }
+
+    .card {
+        width: 100px; /* Ukuran kartu lebih kecil untuk layar sangat kecil */
+        height: 140px; /* Mengurangi tinggi kartu */
+        margin: 5px; /* Mengurangi jarak antar kartu */
+    }
+
+    .card-front,
+    .card-back {
+        font-size: 14px; /* Mengurangi ukuran font pada kartu depan dan belakang */
+    }
+
+    button {
+        padding: 6px 12px; /* Mengurangi padding pada tombol */
+        font-size: 12px; /* Mengurangi ukuran font pada tombol */
+        margin-bottom: 50px; /* Memberikan jarak bawah yang lebih besar pada tombol */
+    }
+
+    .timer {
+        font-size: 14px; /* Mengurangi ukuran font pada timer */
+    }
+
+    footer {
+        font-size: 12px; /* Mengurangi ukuran font footer */
+    }
+}

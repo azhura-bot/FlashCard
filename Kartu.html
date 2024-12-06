@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard Game</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Menghubungkan file CSS eksternal untuk gaya halaman -->
+</head>
+<body>
+    <!-- Audio background dan bell sound -->
+    <audio id="background-music" src="sound/background.mp3" loop autoplay></audio>
+    <audio id="bell-sound" src="sound/bell.mp3"></audio>
+
+    <!-- Header halaman, judul game -->
+    <header>
+        <h1>Flashcard Game</h1>
+    </header>
+
+    <!-- Main content, yang berisi kartu dan tombol start -->
+    <main>
+        <section class="card-container" id="card-container">
+            <!-- Kartu tunggal untuk menampilkan kata "Start" -->
+            <div class="card" id="single-card">
+                <div class="card-inner">
+                    <div class="card-front">Start</div>
+                    <div class="card-back">Click Start</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timer yang menunjukkan waktu yang tersisa -->
+        <div class="timer" id="timer">Time Remaining: 00:00:10</div>
+        <!-- Tombol untuk memulai game -->
+        <button id="start-btn" aria-label="Start the game">Start</button>
+    </main>
+
+    <!-- Footer halaman, berisi informasi tentang pembuat game -->
+    <footer>
+        <p>&copy; Flashcard made by Azh punya Bunda Hira.</p>
+    </footer>
+
+    <!-- Menautkan file JavaScript eksternal -->
+    <script src="script.js"></script>
+</body>
+</html>
