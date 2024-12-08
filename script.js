@@ -15,13 +15,13 @@ let timerInterval;
 const cardContainer = document.getElementById("card-container"); // Container untuk kartu permainan
 const startBtn = document.getElementById("start-btn"); // Tombol untuk memulai/reset permainan
 const timerElement = document.getElementById("timer"); // Elemen untuk menampilkan waktu tersisa
+const speakerToggle = document.getElementById("speaker-toggle"); // 
+const speakerIcon = document.getElementById("speaker-icon");
+const backgroundMusic = document.getElementById("background-music");
 
 // Setup untuk audio permainan
 let bellSound = new Audio("sound/bell.mp3"); // Suara bel yang diputar saat waktu habis
-let backgroundMusic = new Audio("sound/Dancing in Raindrops (1).mp3"); // Musik latar belakang
-backgroundMusic.loop = true; // Musik latar dimainkan terus-menerus
-backgroundMusic.volume = 0.5; // Pengaturan volume musik latar
-backgroundMusic.play(); // Memulai musik latar
+let isPlaying = false;
 
 /* Fungsi untuk mengacak urutan kartu */
 function shuffle(array) {
@@ -49,21 +49,22 @@ function createInitialSetup() {
     cardContainer.innerHTML = ""; // Bersihkan semua kartu sebelumnya
     const staticCard = document.createElement("div"); // Membuat elemen kartu statis
     staticCard.classList.add("card"); // Menambahkan kelas 'card' pada elemen
-    staticCard.innerHTML = `
-        <div class="card-inner">
-            <div class="card-front">Start</div> <!-- Menampilkan tulisan "Start" pada sisi depan kartu -->
-            <div class="card-back">Static Card</div> <!-- Menampilkan tulisan "Static Card" pada sisi belakang kartu -->
-        </div>
-    `;
-    
+    staticCard.innerHTML = 
     // `
     //     <div class="card-inner">
-    //         <div class="card-front">
-    //             <img src="images/start-image.png" alt="Start Image" /> <!-- Ganti dengan gambar yang diinginkan -->
-    //         </div>
+    //         <div class="card-front">Start</div> <!-- Menampilkan tulisan "Start" pada sisi depan kartu -->
     //         <div class="card-back">Static Card</div> <!-- Menampilkan tulisan "Static Card" pada sisi belakang kartu -->
     //     </div>
     // `;
+    
+    `
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="images/static_card.png"/> <!-- Ganti dengan gambar yang diinginkan -->
+            </div>
+            <div class="card-back">Static Card</div> <!-- Menampilkan tulisan "Static Card" pada sisi belakang kartu -->
+        </div>
+    `;
 
     cardContainer.appendChild(staticCard); // Menambahkan kartu statis ke dalam container
 }
@@ -198,8 +199,6 @@ function startGame() {
     }, 500); // Menampilkan kartu setiap 500ms
 }
 
-
-
 /* Fungsi untuk memulai timer */
 function startTimer() {
     // Menentukan waktu permainan jadi kalian bisa nambahin waktu disini dalam hitungan detik 
@@ -256,4 +255,15 @@ startBtn.addEventListener("click", () => {
     } else {
         startGame(); // Memulai permainan
     }
+});
+
+speakerToggle.addEventListener("click", () => {
+    if (isPlaying) {
+        backgroundMusic.play(); // Memainkan musik
+        speakerIcon.classList.replace("fa-volume-mute", "fa-volume-up"); // Ubah ikon menjadi mute
+    } else {
+        backgroundMusic.pause(); // Putar musik
+        speakerIcon.classList.replace("fa-volume-up", "fa-volume-mute"); // Ubah ikon menjadi volume up
+    }
+    isPlaying = !isPlaying; // Toggle state
 });

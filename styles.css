@@ -14,10 +14,68 @@ body {
     min-height: 100vh; /* Memastikan halaman mengisi setidaknya seluruh tinggi layar */
 }
 
-h1 {
-    margin-bottom: 40px; /* Menambahkan jarak bawah untuk judul */
-    color: #fff; /* Mengatur warna teks judul menjadi putih */
+header {
+    display: flex;
+    justify-content: center; /* Mengatur elemen di tengah secara horizontal */
+    align-items: center; /* Mengatur elemen di tengah secara vertikal */
+    height: 150px; /* Tinggi header */
+    padding: 0 10px; /* Padding di sisi header */
 }
+
+#speaker-toggle {
+    position: absolute; /* Menempatkan tombol di posisi spesifik */
+    top: 5px; /* Jarak lebih kecil dari atas untuk memindahkan ikon ke atas */
+    left: 10px; /* Jarak dari kiri */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 40px;
+    color: #333; /* Warna ikon */
+    transition: transform 0.4s cubic-bezier(0.5, 2, 1.5, 2); /* Menambahkan animasi transisi */
+}
+
+#speaker-toggle:focus {
+    outline: none;
+}
+
+#speaker-toggle i {
+    transition: color 0.3s ease;
+}
+
+#speaker-toggle:hover i {
+    color: #fff; /* Warna ikon saat di-hover */
+    transform: scale(1.2); /* Membesarkan gambar saat di-hover */
+}
+
+.judul img {
+    object-fit: contain; /* Menjaga proporsi gambar */
+    max-width: 100%; /* Membuat gambar responsif */
+    transition: transform 0.4s ease-in-out; /* Transisi lembut untuk hover */
+}
+
+.judul img:hover{
+    animation: goyang 0.5s ease-in-out infinite; /* Menambahkan animasi bergoyang */
+}
+
+/* Definisi animasi goyang */
+@keyframes goyang {
+    0% {
+        transform: rotate(0deg); /* Tidak bergoyang */
+    }
+    25% {
+        transform: rotate(5deg); /* Goyang ke kanan */
+    }
+    50% {
+        transform: rotate(0deg); /* Kembali ke posisi semula */
+    }
+    75% {
+        transform: rotate(-5deg); /* Goyang ke kiri */
+    }
+    100% {
+        transform: rotate(0deg); /* Kembali ke posisi semula */
+    }
+}
+
 
 .card-container {
     display: flex; /* Menggunakan Flexbox untuk menata kartu */
@@ -37,6 +95,10 @@ h1 {
     position: relative; /* Menempatkan kartu secara relatif untuk penataan lebih lanjut */
     transition: transform 1s ease-out, opacity 1s ease; /* Menambahkan transisi untuk rotasi dan transparansi 
     ease-out berarti animasi dimulai cepat dan melambat di akhir.*/
+}
+
+.card:hover {
+    transform: scale(1.1);
 }
 
 .card.hidden {
@@ -78,7 +140,10 @@ h1 {
 }
 
 .card-front {
-    background-color: #007bff; /* Mengatur latar belakang kartu depan dengan warna biru */
+    background-image: url("images/static_card.png"); /* Mengatur latar belakang kartu depan dengan warna biru */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .card-back {
@@ -90,11 +155,18 @@ button {
     margin-top: 20px; /* Memberikan jarak atas pada tombol */
     padding: 10px 20px; /* Memberikan padding pada tombol */
     font-size: 16px; /* Ukuran font pada tombol */
-    background-color: #007bff; /* Latar belakang tombol dengan warna biru */
+    background-color: #985909; /* Latar belakang tombol dengan warna biru */
     color: #fff; /* Warna teks tombol menjadi putih */
     border: none; /* Menghapus border pada tombol */
     border-radius: 5px; /* Memberikan sudut melengkung pada tombol */
     cursor: pointer; /* Mengubah kursor menjadi pointer saat mouse berada di atas tombol */
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Menambahkan animasi transisi */
+}
+
+button:hover {
+    background-color: #fff; /* Warna Tulisannya */
+    color: #985909; /* Warna Button*/
+    transform: scale(1.1); /* Membesarkan gambar saat di-hover */
 }
 
 button:disabled {
@@ -109,7 +181,7 @@ button:disabled {
 }
 
 footer {
-    background-color: #007bff; /* Latar belakang footer dengan warna biru */
+    background:linear-gradient(45deg, #613b0a,#985909,#985909) ; /* Latar belakang footer dengan warna biru */
     color: #fff; /* Warna teks footer menjadi putih */
     text-align: center; /* Menengahkan teks di dalam footer */
     padding: 10px 0; /* Memberikan padding pada footer */
@@ -156,9 +228,32 @@ footer {
 }
 
 @media screen and (max-width: 480px) {
-    h1 {
-        font-size: 1.5rem; /* Ukuran font lebih kecil untuk layar sangat kecil */
-        margin-bottom: 50px; /* Memberikan jarak bawah yang lebih besar pada judul */
+
+    body{
+        font-family: Arial, sans-serif; /* Mengatur font untuk seluruh halaman */
+        text-align: center; /* Menengahkan teks di seluruh halaman */
+        background-image: url("images/landing page (2).png"); /* Menambahkan gambar latar belakang */
+        background-size: cover; /* Mengatur gambar latar agar menutupi seluruh halaman */
+        background-position: center; /* Menempatkan gambar latar di tengah */
+        background-repeat: no-repeat; /* Menghindari pengulangan gambar latar */
+        background-color: rgba(0, 0, 0, 0.5); /* Memberikan transparansi hitam di latar belakang */
+        background-blend-mode: overlay; /* Menggabungkan warna latar dengan gambar */
+        margin: 0; /* Menghilangkan margin default dari browser */
+        display: flex; /* Menggunakan Flexbox untuk layout halaman */
+        flex-direction: column; /* Menyusun elemen halaman secara vertikal */
+        justify-content: space-between; /* Menyebarkan elemen untuk mengisi ruang secara merata */
+        min-height: 100vh; /* Memastikan halaman mengisi setidaknya seluruh tinggi layar */
+    }
+
+    .judul{
+        display: flex;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        margin-left: 5px;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
     }
 
     .card-container {
@@ -180,6 +275,7 @@ footer {
         font-size: 14px; /* Mengurangi ukuran font pada kartu depan dan belakang */
     }
 
+    
     button {
         padding: 6px 12px; /* Mengurangi padding pada tombol */
         font-size: 12px; /* Mengurangi ukuran font pada tombol */
